@@ -1,0 +1,33 @@
+<div *ngIf="loading===false">
+<form appearance="fill">
+      <label>
+         Выбор необходимой планети </label>
+      <select [(ngModel)]="selectedPlanet"  name="select">
+         <option *ngFor="let planet of this.planets " [ngValue]="planet">
+           {{planet.name}}
+         </option>
+       </select>
+   </form>
+</div>
+<div *ngIf="selectedPlanet">
+<table>
+   <tr>
+      <th>Название</th>
+      <th>{{selectedPlanet.name}}</th>
+     </tr>
+     <tr>
+      <th>Диаметр</th>
+      <th>{{selectedPlanet.diameter}}</th>
+     </tr>
+     <tr>
+      <th>Климат</th>
+      <th>{{selectedPlanet.climate}}</th>
+     </tr>
+     <tr (click)="open()">
+      <th>Население</th>
+      <th>{{selectedPlanet.population}}</th>
+     </tr>
+</table>
+</div>
+
+<app-modal></app-modal>
